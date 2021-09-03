@@ -68,20 +68,28 @@ The program has to be modular. The main program is the main module, and will onl
 ##### Architecture
 ###### Main module
 Source<br>
-|  main.py<br>
-|  module_loaders.py<br>
-|  modules<br>
-|  |  ...module_folders...<br>
+├─ main.py<br>
+├─ module_loaders.py<br>
+├─ errors.py<br>
+├─ option.dat<br>
+├─ modules<br>
+└─ └─ ...module_folders...<br>
 
 ###### Module folder
 Module name<br>
-|  dependencies.info<br>
-|  lib.info<br>
-|  module_name.py<br>
-|  ...<br>
+├─ dependencies.info<br>
+├─ lib.info<br>
+├─ module_name.py<br>
+└─ ...<br>
 
 ##### Installer
 The installer should have no dependencies, and if possible should not need any internet. The user should be allowed to choose which module he want to have, the installer setting up the choosen modules and its dependencies.
+
+##### Errors
+An simple error managment should be active, using as identifier three indicators, including two id (file/module id and error id), and the weigh of the error.
+
+##### Options
+Depending on options, the app react differently. It should be managable inside the app, but also as a readible file
 
 
 
