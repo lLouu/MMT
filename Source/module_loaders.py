@@ -1,5 +1,8 @@
 class Option:
     autoup = False
+    show_warning = False
+    ask_for_default = True
+    default_ui = None
 
     def __init__(self):
         pass
