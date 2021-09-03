@@ -15,3 +15,6 @@ def launch_ui(opt):
 
 def auto_update():
     return True
+
+def loader():
+    pass
