@@ -1,2 +1,0 @@
-# MMT
- Math Modeling Tool
