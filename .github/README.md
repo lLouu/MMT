@@ -21,6 +21,8 @@ Language : Python
 
 Environement : Visual Studio Code
 
+License : MIT
+
 
 ### Content
 For now, none
@@ -86,15 +88,16 @@ The installer should have no dependencies, and if possible should not need any i
 ### Project-Status
 [Version](#Change-Log) - 0.0.1
 
-Size - x o
+Size - 112 Kb
 
 Current Dev - [@lLouu](https://github.com/lLouu)
 
 
 
 ### Change-Log
-none, for now
-
+#### V0.0.1
+ - github setup & .github folder
+ - README & specifications
 
 ### Sources
 EFREI Courses (I'm afraid, that's private knowledge)
