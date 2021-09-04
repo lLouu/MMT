@@ -3,17 +3,12 @@ This repository is about making a python app to help in basic math modeling. It 
 
 
 ## Table of contents
-[Technologies](#Technologies)
-
-[Content](#Content)
-
-[Specifications](#Specifications)
-
-[Project-Status](#Project-Status)
-
-[Change-Log](#Change-Log)
-
-[Sources](#Sources)
+ - [Technologies](#Technologies)
+ - [Content](#Content)
+ - [Specifications](#Specifications)
+ - [Project-Status](#Project-Status)
+ - [Change-Log](#Change-Log)
+ - [Sources](#Sources)
 
 
 ### Technologies
@@ -25,7 +20,30 @@ License : MIT
 
 
 ### Content
-For now, none
+#### Main Module
+##### main.py
+ - main()
+
+##### errors.py
+ - Error class
+ - MAX_ID_MODULE
+ - index
+ - error()
+
+##### module_loaders.py
+ - Option class
+ - BAN_EXT
+ - simplify(o)
+ - getContent(path)
+ - read_opt(path)
+ - getModules(opt = Option())
+ - launch_ui(opt, list)
+ - setDefaultUI(opt, ui_module)
+ - loader(package, name, path = '')
+
+ #### UI module
+ ##### default_ui.py
+  - main_ui.py
 
 
 ### Specifications
@@ -94,9 +112,9 @@ Depending on options, the app react differently. It should be managable inside t
 
 
 ### Project-Status
-[Version](#Change-Log) - 0.0.1
+[Version](#Change-Log) - 0.0.2
 
-Size - 112 Kb
+Size - 119 Kb (216 Kb on disk)
 
 Current Dev - [@lLouu](https://github.com/lLouu)
 
