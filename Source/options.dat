@@ -4,7 +4,10 @@
 overide_file=
 
 # autoup setted to true, t or 1 will enable autoupdates
-autoup=false
+autoup=true
+
+# list of module_folders, separated with comas. "Source\\modules" is hardcoded, and used if nothing is given. Please use "\\" to prevent any issue
+module_folder="Source\\modules"
 
 # show_warnings setted to true, t or 1 will enable the lowest error messages (weight of 0)
 show_warnings=false
