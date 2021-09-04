@@ -13,7 +13,7 @@ module_folder="Source\\modules"
 show_warnings=false
 
 # The two following options are about the case of conflicting ui
-# ask_for_default will ask the user preference for a ui if any conflict is founded
+# ask_for_default will ask the user preference for a ui if any conflict is founded and if no default ui are setted between the conflicting modules
 ask_for_default=true
 # default_ui gives the ui the app should choose in case of conflict
-default_ui=
+default_ui=default_ui
