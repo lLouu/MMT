@@ -37,11 +37,12 @@ def simplify(o):
 
     return new_o.split('=')
 
+BAN_EXT = ["png", "jpg", "jpeg", "bin", "dll", "exe"]
 def getContent(path):
     if not(p.exists(path)):
         error(0, 3, 1, path + " not found")
         return None
-    if not(p.isfile(path)):
+    if not(p.isfile(path)) or (len(path) > 4 and (path[-3:] in BAN_EXT or path[-4:] in BAN_EXT)):
         error(0, 4, 1, path + " not readble")
         return None
 
@@ -181,7 +182,7 @@ def setDefaultUI(opt, ui_module):
 # a = loader(package, name) will allow a(<vars>) to execute name with <vars>
 # why don't we learn that and have to find this... beautiful thing by ourselves ;--;
 def loader(package, name, path = ''):
-    if path != '':
+    if not path in pyPath:
         pyPath.append(path)
     return getattr(__import__(package, fromlist=[name]), name)
 
