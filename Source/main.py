@@ -2,7 +2,7 @@ from module_loaders import read_opt, launch_ui, auto_update
 from errors import error
 
 def main():
-    opt = read_opt()
+    opt = read_opt("Source/options.dat")
 
     if opt.autoup:
         if not(auto_update()):

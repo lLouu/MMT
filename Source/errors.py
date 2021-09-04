@@ -2,7 +2,7 @@ class Error:
     def __init__(self):
         pass
 
-def error(file_id, id, weight):
+def error(file_id, id, weight, message = ''):
     file_id = file_id if 0 <= file_id <= MAX_ID_MODULE else -1
     pass
 
