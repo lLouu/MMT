@@ -1,9 +1,10 @@
-from genericpath import isfile
-from os import path as p
+from os import path as p, remove
+from glob import glob
 from errors import error
 
 class Option:
     autoup = False
+    module_folder = ["Source\\modules"]
     show_warning = False
     ask_for_default = True
     default_ui = None
@@ -56,17 +57,22 @@ def read_opt(path):
                     over_opt = read_opt(o[1])
                     return over_opt
                 elif o[0] == "autoup":
-                    if o[1][1] == "t" or o[1][1] == "T" or o[1][1] == "1":
+                    if o[1][0] == "t" or o[1][0] == "T" or o[1][0] == "1":
                         opt.autoup = True
                     else:
                         opt.autoup = False
+                elif o[0] == "module_folder":
+                    list = o[1].split(",")
+                    for ele in list:
+                        if not(ele in opt.module_folder):
+                            opt.module_folder += ele
                 elif o[0] == "show_warnings":
-                    if o[1][1] == "t" or o[1][1] == "T" or o[1][1] == "1":
+                    if o[1][0] == "t" or o[1][0] == "T" or o[1][0] == "1":
                         opt.show_warning = True
                     else:
                         opt.show_warning = False
                 elif o[0] == "ask_for_default":
-                    if o[1][1] == "f" or o[1][1] == "F" or o[1][1] == "0":
+                    if o[1][0] == "f" or o[1][0] == "F" or o[1][0] == "0":
                         opt.ask_for_default = False
                     else:
                         opt.ask_for_default = True
@@ -80,6 +86,19 @@ def read_opt(path):
                     error(0, 6, 0)
 
     return opt
+
+def getModules(opt = Option()):
+    list = {"path": [], 
+            "name": []}
+    for path in opt.module_folder:
+        list["path"] += glob(path + "\*")
+    for i in range(len(list["path"])):
+        if p.isfile(list["path"][i]):
+            error(0, 7, 0, list["path"][i] + " is not a module")
+            del list["path"][i]
+        else:
+            list["name"] += [list["path"][i].split("\\")[-1]]
+    return list
 
 def launch_ui(opt):
     return True
