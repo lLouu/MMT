@@ -1,0 +1,19 @@
+# You can comment this file with '#' at the start of the line. It doesn't work if not for a line
+
+# overide_file can be filled with a path to another option file locate elsewhere. The option inside this new file will overide this file
+overide_file=
+
+# autoup setted to true, t or 1 will enable autoupdates
+autoup=true
+
+# list of module_folders, separated with comas. "Source\\modules" is hardcoded, and used if nothing is given. Please use "\\" to prevent any issue
+module_folder="Source\\modules"
+
+# show_warnings setted to true, t or 1 will enable the lowest error messages (weight of 0)
+show_warnings=false
+
+# The two following options are about the case of conflicting ui
+# ask_for_default will ask the user preference for a ui if any conflict is founded and if no default ui are setted between the conflicting modules
+ask_for_default=true
+# default_ui gives the ui the app should choose in case of conflict
+default_ui=default_ui
