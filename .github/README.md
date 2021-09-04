@@ -3,17 +3,12 @@ This repository is about making a python app to help in basic math modeling. It 
 
 
 ## Table of contents
-[Technologies](#Technologies)
-
-[Content](#Content)
-
-[Specifications](#Specifications)
-
-[Project-Status](#Project-Status)
-
-[Change-Log](#Change-Log)
-
-[Sources](#Sources)
+ - [Technologies](#Technologies)
+ - [Content](#Content)
+ - [Specifications](#Specifications)
+ - [Project-Status](#Project-Status)
+ - [Change-Log](#Change-Log)
+ - [Sources](#Sources)
 
 
 ### Technologies
@@ -25,7 +20,30 @@ License : MIT
 
 
 ### Content
-For now, none
+#### Main Module
+##### main.py
+ - main()
+
+##### errors.py
+ - Error class
+ - MAX_ID_MODULE
+ - index
+ - error()
+
+##### module_loaders.py
+ - Option class
+ - BAN_EXT
+ - simplify(o)
+ - getContent(path)
+ - read_opt(path)
+ - getModules(opt = Option())
+ - launch_ui(opt, list)
+ - setDefaultUI(opt, ui_module)
+ - loader(package, name, path = '')
+
+ #### UI module
+ ##### default_ui.py
+  - main_ui.py
 
 
 ### Specifications
@@ -68,27 +86,35 @@ The program has to be modular. The main program is the main module, and will onl
 ##### Architecture
 ###### Main module
 Source<br>
-|  main.py<br>
-|  module_loaders.py<br>
-|  modules<br>
-|  |  ...module_folders...<br>
+├─ main.py<br>
+├─ module_loaders.py<br>
+├─ errors.py<br>
+├─ option.dat<br>
+├─ modules<br>
+└─ └─ ...module_folders...<br>
 
 ###### Module folder
 Module name<br>
-|  dependencies.info<br>
-|  lib.info<br>
-|  module_name.py<br>
-|  ...<br>
+├─ dependencies.info<br>
+├─ lib.info<br>
+├─ module_name.py<br>
+└─ ...<br>
 
 ##### Installer
 The installer should have no dependencies, and if possible should not need any internet. The user should be allowed to choose which module he want to have, the installer setting up the choosen modules and its dependencies.
 
+##### Errors
+An simple error managment should be active, using as identifier three indicators, including two id (file/module id and error id), and the weigh of the error.
+
+##### Options
+Depending on options, the app react differently. It should be managable inside the app, but also as a readible file
+
 
 
 ### Project-Status
-[Version](#Change-Log) - 0.0.1
+[Version](#Change-Log) - 0.0.2
 
-Size - 112 Kb
+Size - 119 Kb (216 Kb on disk)
 
 Current Dev - [@lLouu](https://github.com/lLouu)
 
