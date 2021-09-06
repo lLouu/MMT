@@ -1,0 +1,23 @@
+{
+    "fill": "both",
+    "expand": "YES",
+    "include": {
+        "in": {
+            "fill":"y",
+            "side": "left"
+        },
+        "out": {
+            "fill":"x",
+            "side": "bottom"
+        },
+        "graph": {
+            "fill": "both",
+            "expand": "YES",
+            "include": {
+                "opt": {
+                    "fill": "x"
+                }
+            }
+        }
+    }
+}
