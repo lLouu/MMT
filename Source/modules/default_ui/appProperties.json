@@ -9,11 +9,6 @@
     },
     "graph": {
         "fill": "both",
-        "expand": "YES",
-        "include": {
-            "opt": {
-                "fill": "x"
-            }
-        }
+        "expand": "YES"
     }
 }

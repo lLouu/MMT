@@ -1,22 +1,23 @@
 {
     "in": {
         "type": "Frame",
-        "bg": "red",
+        "bd": 1,
         "width": 200
     },
     "out": {
         "type": "Frame",
-        "bg": "blue",
+        "bd": 1,
         "height": 170
     },
     "graph": {
         "type": "Frame",
-        "bg": "green",
+        "bd": 1,
         "include": {
             "opt": {
-                "bg": "yellow",
+                "bd": 1,
                 "type": "Frame",
-                "height": 20
+                "height": 20,
+                "width": 300
             }
         }
     }
