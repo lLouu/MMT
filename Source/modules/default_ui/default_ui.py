@@ -9,6 +9,9 @@ class App():
         self.load()
     
     def setup(self, winPath, compoPath, propertiesPath):
+        self.hasMenu = False
+        self.menuName = None
+
         self.window = self.new_win(self.load_json(winPath))
         self.compo = self.load_json(compoPath)
         self.properties = self.load_json(propertiesPath)
@@ -36,6 +39,9 @@ class App():
     def load(self):
         self.construct(self.compo, self.window)
         self.pack(self.compo, self.properties)
+        if self.hasMenu:
+            self.setMenu()
+
         self.window.update_idletasks()
 
     def empty_method(self, second=None):
@@ -49,6 +55,8 @@ class App():
             return DoubleVar().set(value)
         elif st == "String":
             return StringVar().set(str(value))
+        elif st == "Bool":
+            return BooleanVar().set(value)
         else:
             return IntVar().set(value)
     
@@ -272,24 +280,26 @@ class App():
                 #     obj = Listbox(parrent)
                 # elif dic["type"] == "Canvas":
                 #     obj = Canvas(parrent)
-                # elif dic["type"] == "Menu":
-                #     obj = Menu(parrent,
-                #             activebackground="gray" if not "activebackground" in keys else dic["activebackground"],
-                #             activeborderwidth=0 if not "activeborderwidth" in keys else dic["activeborderwidth"],
-                #             activeforeground="black" if not "activeforeground" in keys else dic["activeforeground"],
-                #             bd=0 if not "bd" in keys else dic["bd"],
-                #             bg="white" if not "bg" in keys else dic["bg"],
-                #             cursor="arrow" if not "cursor" in keys else dic["cursor"],
-                #             disabledforeground="gray" if not "disabledforground" in keys else dic["disabledforeground"],
-                #             font=("Times", "9") if not "font" in keys else dic["font"],
-                #             fg="black" if not "fg" in keys else dic["fg"],
-                #             postcommand=self.empty_method if not "command" in keys else 
-                #                         lambda: loader(dic["command"]["package"], dic["command"]["name"],
-                #                         '' if not "path" in list(dic["command"].keys()) else dic["command"]["path"]),
-                #             relief=FLAT if not "relief" in keys else dic["relief"],
-                #             selectcolor="gray" if not "selectcolor" in keys else dic["selectcolor"],
-                #             tearoff=1 if not "tearoff" in keys else dic["tearoff"],
-                #             title="Menu" if not "title" in keys else dic["title"])
+                elif dic["type"] == "Menu":
+                    obj = Menu(parrent,
+                            activebackground="gray" if not "activebackground" in keys else dic["activebackground"],
+                            activeborderwidth=0 if not "activeborderwidth" in keys else dic["activeborderwidth"],
+                            activeforeground="black" if not "activeforeground" in keys else dic["activeforeground"],
+                            bd=0 if not "bd" in keys else dic["bd"],
+                            bg="white" if not "bg" in keys else dic["bg"],
+                            cursor="arrow" if not "cursor" in keys else dic["cursor"],
+                            disabledforeground="gray" if not "disabledforground" in keys else dic["disabledforeground"],
+                            font=("Times", "9") if not "font" in keys else dic["font"],
+                            fg="black" if not "fg" in keys else dic["fg"],
+                            postcommand=self.empty_method if not "command" in keys else 
+                                        lambda: loader(dic["command"]["package"], dic["command"]["name"],
+                                        '' if not "path" in list(dic["command"].keys()) else dic["command"]["path"]),
+                            relief=FLAT if not "relief" in keys else dic["relief"],
+                            selectcolor="gray" if not "selectcolor" in keys else dic["selectcolor"],
+                            tearoff=0 if not "tearoff" in keys else dic["tearoff"],
+                            title="Menu" if not "title" in keys else dic["title"])
+                elif dic["type"] == "Data":
+                    obj = None
                 else:
                     obj = Frame(parrent,
                                 bg="white" if not "bg" in keys else dic["bg"],
@@ -319,27 +329,66 @@ class App():
             dic["obj"] = obj
             compo[index] = dic
 
-    def pack(self, obj, pack):
+    def pack(self, obj, pack, caller=1):
         for index in list(pack.keys()):
             data = pack[index]
             keys = list(data.keys())
-            if "include" in keys:
-                self.pack(obj[index]["include"], data["include"])
             
-            if "mode" in keys and data["mode"] == "grid":
-                obj[index]["obj"].grid(column=0 if not "column" in keys else data["column"],
-                                columnspan=1 if not "columnspan" in keys else data["columnspan"],
-                                ipadx=0 if not "ipadx" in keys else data["ipadx"],
-                                ipady=0 if not "ipady" in keys else data["ipady"],
-                                padx=0 if not "padx" in keys else data["padx"],
-                                pady=0 if not "pady" in keys else data["pady"],
-                                row=0 if not "row" in keys else data["row"],
-                                rowspan=1 if not "rowspan" in keys else data["rowspan"],
-                                sticky=W if not "sticky" in keys else data["sticky"])
+            if "type" in list(obj[index].keys()) and obj[index]["type"] == "Menu":
+                if caller == 1:
+                    self.hasMenu = True
+                    self.menuName = index
             else:
-                obj[index]["obj"].pack(expand=NO if not "expand" in keys else data["expand"],
-                                fill=NONE if not "fill" in keys else data["fill"],
-                                side=TOP if not "side" in keys else data["side"])
+                if "include" in keys:
+                    self.pack(obj[index]["include"], data["include"], 0)
+                
+                if "mode" in keys and data["mode"] == "grid":
+                    obj[index]["obj"].grid(column=0 if not "column" in keys else data["column"],
+                                    columnspan=1 if not "columnspan" in keys else data["columnspan"],
+                                    ipadx=0 if not "ipadx" in keys else data["ipadx"],
+                                    ipady=0 if not "ipady" in keys else data["ipady"],
+                                    padx=0 if not "padx" in keys else data["padx"],
+                                    pady=0 if not "pady" in keys else data["pady"],
+                                    row=0 if not "row" in keys else data["row"],
+                                    rowspan=1 if not "rowspan" in keys else data["rowspan"],
+                                    sticky=W if not "sticky" in keys else data["sticky"])
+                else:
+                    obj[index]["obj"].pack(expand=NO if not "expand" in keys else data["expand"],
+                                    fill=NONE if not "fill" in keys else data["fill"],
+                                    side=TOP if not "side" in keys else data["side"])
+
+    def setMenu(self):
+        if self.menuName in list(self.compo.keys()):
+            self.window.config(menu=self.compo[self.menuName]["obj"])
+            self.menuConfig(self.compo[self.menuName])
+    
+    def menuConfig(self, compo):
+        menu = compo["obj"]
+        if "include" in list(compo.keys()):
+            for index in list(compo["include"].keys()):
+                ele = compo["include"][index]
+                if ele["mode"]["type"] == "command":
+                    menu.add_command(label=ele["mode"]["label"],
+                                     command=lambda: loader(ele["mode"]["package"], ele["mode"]["name"])
+                                     (self, ele["mode"]["content"]))
+                elif ele["mode"]["type"] == "cascade":
+                    menu.add_cascade(label=ele["mode"]["label"],
+                                     menu=ele["obj"])
+                    self.menuConfig(ele)
+                elif ele["mode"]["type"] == "radiobutton":
+                    menu.add_radiobutton(label=ele["mode"]["label"],
+                                         value=ele["mode"]["value"],
+                                         variable=lambda: loader(ele["mode"]["variable"]["package"], ele["mode"]["variable"]["name"]),
+                                         command=lambda: loader(ele["mode"]["command"]["package"], ele["mode"]["command"]["name"]))
+                elif ele["mode"]["type"] == "checkbox":
+                    menu.add_checkbutton(label=ele["mode"]["label"],
+                                         onvalue=ele["mode"]["onvalue"],
+                                         offvalue=ele["mode"]["offvalue"],
+                                         variable=lambda: loader(ele["mode"]["variable"]["package"], ele["mode"]["variable"]["name"]),
+                                         command=lambda: loader(ele["mode"]["command"]["package"], ele["mode"]["command"]["name"]))
+                elif ele["mode"]["type"] == "separator":
+                    menu.separator()
+
 
     def run(self):
         self.window.mainloop()
