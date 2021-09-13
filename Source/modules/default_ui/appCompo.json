@@ -1,0 +1,186 @@
+{
+    "menu":{
+        "type": "Menu",
+        "include":{
+            "app":{
+                "type": "Menu",
+                "mode":{
+                    "type": "cascade",
+                    "label": "App"
+                },
+                "include":{
+                    "save":{
+                        "type": "Menu",
+                        "mode":{
+                            "type": "cascade",
+                            "label": "Save..."
+                        },
+                        "include":{
+                            "data":{
+                                "type": "Data",
+                                "mode":{
+                                    "type": "command",
+                                    "label": "Datas"
+                                }
+                            },
+                            "graph":{
+                                "type": "Data",
+                                "mode":{
+                                    "type": "command",
+                                    "label": "Graph"
+                                }
+                            }
+                        }
+                    },
+                    "load":{
+                        "type": "Data",
+                        "mode":{
+                            "type": "command",
+                            "label": "Load data file"
+                        }
+                    },
+                    "sep":{
+                        "type": "Data",
+                        "mode":{
+                            "type": "separator"
+                        }
+                    },
+                    "reset":{
+                        "type": "Data",
+                        "mode":{
+                            "type": "command",
+                            "label": "Reset"
+                        }
+                    }
+                }
+            },
+            "tools":{
+                "type": "Menu",
+                "mode":{
+                    "type": "cascade",
+                    "label": "Tools"
+                },
+                "include":{
+                    "solutions":{
+                        "type": "Data",
+                        "mode":{
+                            "type": "command",
+                            "label": "Solutions Apr."
+                        }
+                    },
+                    "primitive":{
+                        "type": "Data",
+                        "mode":{
+                            "type": "command",
+                            "label": "Primitives Apr."
+                        }
+                    },
+                    "derivative":{
+                        "type": "Data",
+                        "mode":{
+                            "type": "command",
+                            "label": "Derivatives Apr."
+                        }
+                    },
+                    "interpol":{
+                        "type": "Data",
+                        "mode":{
+                            "type": "command",
+                            "label": "Interploation"
+                        }
+                    }
+                }
+            },
+            "graph":{
+                "type": "Menu",
+                "mode":{
+                    "type": "cascade",
+                    "label": "Graph"
+                },
+                "include":{
+                    "generate":{
+                        "type": "Data",
+                        "mode":{
+                            "type": "command",
+                            "label": "Generate"
+                        }
+                    },
+                    "analyse":{
+                        "type": "Data",
+                        "mode":{
+                            "type": "command",
+                            "label": "Analyse"
+                        }
+                    },
+                    "sep":{
+                        "type": "Data",
+                        "mode":{
+                            "type": "separator"
+                        }
+                    },
+                    "open":{
+                        "type": "Data",
+                        "mode":{
+                            "type": "command",
+                            "label": "Open"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "in": {
+        "type": "Frame",
+        "bd": 1,
+        "include":{
+            "chooser":{
+                "type": "Frame",
+                "height": 30,
+                "include":{
+                    "solutions":{
+                        "type": "Button",
+                        "text": "Solut",
+                        "relief": "flat"
+                    },
+                    "primitive":{
+                        "type": "Button",
+                        "text": "Prim",
+                        "relief": "flat"
+                    },
+                    "derivative":{
+                        "type": "Button",
+                        "text": "Deriv",
+                        "relief": "flat"
+                    },
+                    "interpol":{
+                        "type": "Button",
+                        "text": "Interpol",
+                        "relief": "flat"
+                    }
+                }
+            },
+            "content":{
+                "type": "Custom"
+            }
+        }
+    },
+    "out": {
+        "type": "Frame",
+        "bd": 1,
+        "height": 170,
+        "include":{
+            "results":{
+                "type": "Custom"
+            }
+        }
+    },
+    "graph": {
+        "type": "Frame",
+        "bd": 1,
+        "include": {
+            "graph": {
+                "type": "Custom"
+            }
+        }
+    }
+}
