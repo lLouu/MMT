@@ -1,7 +1,38 @@
 {
     "in": {
         "fill":"y",
-        "side": "left"
+        "side": "left",
+        "include":{
+            "chooser":{
+                "fill": "x",
+                "include":{
+                    "solutions":{
+                        "mode": "grid",
+                        "column": 0,
+                        "ipadx": 10
+                    },
+                    "primitive":{
+                        "mode": "grid",
+                        "column": 1,
+                        "ipadx": 10
+                    },
+                    "derivative":{
+                        "mode": "grid",
+                        "column": 2,
+                        "ipadx": 10
+                    },
+                    "interpol":{
+                        "mode": "grid",
+                        "column": 3,
+                        "ipadx": 10
+                    }
+                }
+            },
+            "content":{
+                "fill": "both",
+                "expand": "YES"
+            }
+        }
     },
     "out": {
         "fill":"x",
@@ -9,6 +40,12 @@
     },
     "graph": {
         "fill": "both",
-        "expand": "YES"
+        "expand": "YES",
+        "include": {
+            "graph":{
+                "fill": "both",
+                "expand": "YES"
+            }
+        }
     }
 }
