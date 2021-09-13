@@ -287,6 +287,8 @@ class App():
                             selectcolor="gray" if not "selectcolor" in keys else dic["selectcolor"],
                             tearoff=0 if not "tearoff" in keys else dic["tearoff"],
                             title="Menu" if not "title" in keys else dic["title"])
+                elif dic["type"] == "Custom":
+                    obj = None if not "package" in keys or not "name" in keys else loader(dic["package"], dic["name"], '' if not "path" in keys else dic["path"])(parrent, None if not "entry" in keys else dic["entry"])
                 elif dic["type"] == "Data":
                     obj = None
                 else:
@@ -319,7 +321,8 @@ class App():
             if "include" in keys:
                 self.construct(dic["include"], obj)
 
-            dic["obj"] = obj
+            if obj != None:
+                dic["obj"] = obj
             compo[index] = dic
 
     def pack(self, obj, pack, caller=1):
@@ -381,7 +384,7 @@ class App():
                                         command=self.empty_method if not "package" in keys or not "name" in keys else lambda: loader(config["package"], config["name"], '' if not "path" in keys else config["path"])(self, None if not "entry" in keys else config["entry"]))
                     elif config["type"] == "cascade":
                         menu.add_cascade(label="Unkown Option" if not "label" in keys else config["label"],
-                                        menu=None if not "obj" in list(ele.key()) else ele["obj"])
+                                        menu=None if not "obj" in list(ele.keys()) else ele["obj"])
                         self.menuConfig(ele)
                     elif config["type"] == "radiobutton":
                         menu.add_radiobutton(label="Unkown Option" if not "label" in keys else config["label"],
@@ -395,7 +398,7 @@ class App():
                                             variable=IntVar() if not "variable" in keys or config["variable"] != dict or not "package" in list(config["variable"].keys() or not "name" in list(config["variable"].keys())) else lambda: loader(config["variable"]["package"], config["variable"]["name"], '' if not "path" in list(config["variable"].keys()) else config["variable"]["path"])(self, None if not "entry" in list(config["variable"].keys()) else config["variable"]["entry"]),
                                             command=self.empty_method if not "package" in keys or not "name" in keys else lambda: loader(config["package"], config["name"], '' if not "path" in keys else config["path"])(self, None if not "entry" in keys else config["entry"]))
                     elif config["type"] == "separator":
-                        menu.separator()
+                        menu.add_separator()
 
 
     def run(self):
