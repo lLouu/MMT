@@ -65,28 +65,44 @@
                         "type": "Data",
                         "mode":{
                             "type": "command",
-                            "label": "Solutions Apr."
+                            "label": "Solutions Apr.",
+                            "package": "ui_content_manager",
+                            "name": "gen_popup",
+                            "entry": "Solutions",
+                            "path": "Source\\modules\\ui_content_manager"
                         }
                     },
                     "primitive":{
                         "type": "Data",
                         "mode":{
                             "type": "command",
-                            "label": "Primitives Apr."
+                            "label": "Primitives Apr.",
+                            "package": "ui_content_manager",
+                            "name": "gen_popup",
+                            "entry": "Primitive",
+                            "path": "Source\\modules\\ui_content_manager"
                         }
                     },
                     "derivative":{
                         "type": "Data",
                         "mode":{
                             "type": "command",
-                            "label": "Derivatives Apr."
+                            "label": "Derivatives Apr.",
+                            "package": "ui_content_manager",
+                            "name": "gen_popup",
+                            "entry": "Derivative",
+                            "path": "Source\\modules\\ui_content_manager"
                         }
                     },
                     "interpol":{
                         "type": "Data",
                         "mode":{
                             "type": "command",
-                            "label": "Interploation"
+                            "label": "Interploation",
+                            "package": "ui_content_manager",
+                            "name": "gen_popup",
+                            "entry": "Interpolation",
+                            "path": "Source\\modules\\ui_content_manager"
                         }
                     }
                 }
@@ -140,27 +156,56 @@
                     "solutions":{
                         "type": "Button",
                         "text": "Solut",
-                        "relief": "flat"
+                        "relief": "flat",
+                        "command":{
+                            "package": "ui_content_manager",
+                            "name": "up_input_content",
+                            "entry": "Solutions",
+                            "path": "Source\\modules\\ui_content_manager"
+                        }
                     },
                     "primitive":{
                         "type": "Button",
                         "text": "Prim",
-                        "relief": "flat"
+                        "relief": "flat",
+                        "command":{
+                            "package": "ui_content_manager",
+                            "name": "up_input_content",
+                            "entry": "Primitive",
+                            "path": "Source\\modules\\ui_content_manager"
+                        }
                     },
                     "derivative":{
                         "type": "Button",
                         "text": "Deriv",
-                        "relief": "flat"
+                        "relief": "flat",
+                        "command":{
+                            "package": "ui_content_manager",
+                            "name": "up_input_content",
+                            "entry": "Derivative",
+                            "path": "Source\\modules\\ui_content_manager"
+                        }
                     },
                     "interpol":{
                         "type": "Button",
                         "text": "Interpol",
-                        "relief": "flat"
+                        "relief": "flat",
+                        "command":{
+                            "package": "ui_content_manager",
+                            "name": "up_input_content",
+                            "entry": "Interpolation",
+                            "path": "Source\\modules\\ui_content_manager"
+                        }
                     }
                 }
             },
             "content":{
-                "type": "Custom"
+                "type": "Custom",
+                "package": "ui_content_manager",
+                "name": "get_input_object",
+                "entry": "Interpolation",
+                "path": "Source\\modules\\ui_content_manager"
+
             }
         }
     },
@@ -170,7 +215,11 @@
         "height": 170,
         "include":{
             "results":{
-                "type": "Custom"
+                "type": "Custom",
+                "package": "ui_content_manager",
+                "name": "get_output_object",
+                "entry": "Interpolation",
+                "path": "Source\\modules\\ui_content_manager"
             }
         }
     },
@@ -179,7 +228,11 @@
         "bd": 1,
         "include": {
             "graph": {
-                "type": "Custom"
+                "type": "Custom",
+                "package": "ui_content_manager",
+                "name": "get_graph_object",
+                "entry": "Interpolation",
+                "path": "Source\\modules\\ui_content_manager"
             }
         }
     }
