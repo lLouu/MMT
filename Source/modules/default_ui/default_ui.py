@@ -4,6 +4,8 @@ from json import loads
 from module_loaders import loader, getContent
 from errors import error
 
+tkclass = [Tk, Label, Button, Entry, Radiobutton, Checkbutton, Scale, Text, LabelFrame, Canvas, Listbox, Frame]
+
 class App():
 
     def __init__(self, winPath="Source/modules/default_ui/appWindow.json", compoPath="Source/modules/default_ui/appCompo.json", propertiesPath="Source/modules/default_ui/appProperties.json"):
@@ -13,10 +15,12 @@ class App():
     def setup(self, winPath, compoPath, propertiesPath):
         self.hasMenu = False
         self.menuName = None
-
-        self.window = self.new_win(self.load_json(winPath))
+        global tkclass
+        self.window = winPath if winPath.__class__ in tkclass else self.new_win(self.load_json(winPath))
         self.compo = self.load_json(compoPath)
         self.properties = self.load_json(propertiesPath)
+        if winPath.__class__ in tkclass:
+            self.hasMenu = False
 
     def new_win(self, json):
         win = Tk()
@@ -288,8 +292,6 @@ class App():
                             selectcolor="gray" if not "selectcolor" in keys else dic["selectcolor"],
                             tearoff=0 if not "tearoff" in keys else dic["tearoff"],
                             title="Menu" if not "title" in keys else dic["title"])
-                elif dic["type"] == "Custom":
-                    obj = None if not "package" in keys or not "name" in keys else loader(dic["package"], dic["name"], '' if not "path" in keys else dic["path"])(parrent, None if not "entry" in keys else dic["entry"])
                 elif dic["type"] == "Data":
                     obj = None
                 else:
@@ -304,7 +306,10 @@ class App():
                                 width=0 if not "width" in keys else dic["width"],
                                 height=0 if not "height" in keys else dic["height"],
                                 padx=0 if not "padx" in keys else dic["padx"],
-                                pady=0 if not "pady" in keys else dic["pady"],)
+                                pady=0 if not "pady" in keys else dic["pady"])
+                    if dic["type"] == "Custom" and "package" in keys and "name" in keys:
+                        loader(dic["package"], dic["name"], '' if not "path" in keys else dic["path"])(obj, None if not "entry" in keys else dic["entry"])
+                
             else:
                 obj = Frame(parrent,
                             bg="white" if not "bg" in keys else dic["bg"],
@@ -317,7 +322,7 @@ class App():
                             width=0 if not "width" in keys else dic["width"],
                             height=0 if not "height" in keys else dic["height"],
                             padx=0 if not "padx" in keys else dic["padx"],
-                            pady=0 if not "pady" in keys else dic["pady"],)
+                            pady=0 if not "pady" in keys else dic["pady"])
         
             if "include" in keys:
                 self.construct(dic["include"], obj)
