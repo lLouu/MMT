@@ -1,5 +1,10 @@
+set_input_object
+set_output_object
+set_output_text
+set_graph_object
 get_input_object
 get_output_object
+get_output_text
 get_graph_object
 up_input_content
 up_output_content

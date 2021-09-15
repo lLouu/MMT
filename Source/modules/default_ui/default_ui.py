@@ -4,8 +4,6 @@ from json import loads
 from module_loaders import loader, getContent
 from errors import error
 
-tkclass = [Tk, Label, Button, Entry, Radiobutton, Checkbutton, Scale, Text, LabelFrame, Canvas, Listbox, Frame]
-
 class App():
 
     def __init__(self, winPath="Source/modules/default_ui/appWindow.json", compoPath="Source/modules/default_ui/appCompo.json", propertiesPath="Source/modules/default_ui/appProperties.json"):
@@ -15,11 +13,11 @@ class App():
     def setup(self, winPath, compoPath, propertiesPath):
         self.hasMenu = False
         self.menuName = None
-        global tkclass
-        self.window = winPath if winPath.__class__ in tkclass else self.new_win(self.load_json(winPath))
+        self.tkclass = [Tk, Label, Button, Entry, Radiobutton, Checkbutton, Scale, Text, LabelFrame, Canvas, Listbox, Frame]
+        self.window = winPath if winPath.__class__ in self.tkclass else self.new_win(self.load_json(winPath))
         self.compo = self.load_json(compoPath)
         self.properties = self.load_json(propertiesPath)
-        if winPath.__class__ in tkclass:
+        if winPath.__class__ in self.tkclass:
             self.hasMenu = False
 
     def new_win(self, json):
@@ -55,13 +53,16 @@ class App():
     
     def get_tk_object(self, st, value):
         if st == "Double":
-            return DoubleVar().set(value)
+            ret = DoubleVar()
         elif st == "String":
-            return StringVar().set(str(value))
+            ret = StringVar()
         elif st == "Bool":
-            return BooleanVar().set(value)
+            ret = BooleanVar()
         else:
-            return IntVar().set(value)
+            ret = IntVar()
+        
+        ret.set(value)
+        return ret
     
 
     ## TODO - Scroll bars && Canvas
@@ -136,7 +137,7 @@ class App():
                                 selectbackground="blue" if not "selectbackground" in keys else dic["selectbackground"],
                                 selectborderwidth=1 if not "selectborderwidth" in keys else dic["selectbackground"],
                                 selectforeground="white" if not "selectforeground" in keys else dic["selectforeground"],
-                                show="tree headings" if not "show" in keys else dic["show"],
+                                show=None if not "show" in keys else dic["show"],
                                 state=NORMAL if not "state" in keys else dic["state"],
                                 textvariable=None if not "textvariable" in keys or dic["textvariable"].__class__ != dict or not "package" in list(dic["textvariable"].keys()) or not "name" in list(dic["textvariable"].keys()) else loader(dic["textvariable"]["package"], dic["textvariable"]["name"])(self, None if not "entry" in list(dic["textvariable"].keys()) else dic["textvariable"]["entry"]),
                                 width=0 if not "width" in keys else dic["width"])
@@ -406,6 +407,20 @@ class App():
                                             command=self.empty_method if not "package" in keys or not "name" in keys else partial(loader(config["package"], config["name"], '' if not "path" in keys else config["path"]), self, None if not "entry" in keys else config["entry"]))
                     elif config["type"] == "separator":
                         menu.add_separator()
+
+
+    def delete(self, compo):
+        if compo.__class__ in self.tkclass:
+            compo.destroy()
+        elif compo.__class__ == dict:
+            for index in list(compo.keys()):
+                self.delete(compo[index])
+
+    def reset(self, new_compoPath, new_propertiesPath):
+        self.delete(self.compo)
+        self.compo = self.load_json(new_compoPath)
+        self.properties = self.load_json(new_propertiesPath)
+        self.load()
 
 
     def run(self):
