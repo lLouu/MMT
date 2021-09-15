@@ -10,14 +10,17 @@ graph = None
 
 
 # Getter
-def get_input_object(parrent, entry=None):
-    pass
+def get_input_object(parrent, entry="Solutions"):
+    global input
+    input = App(parrent, "Source\\modules\\ui_content_manager\\json\\input\\" + entry + "\\appCompo.json", "Source\\modules\\ui_content_manager\\json\\input\\" + entry + "\\appProperties.json")
 
 def get_output_object(parrent, entry=None):
-    pass
+    global output
+    output = App(parrent, "Source\\modules\\ui_content_manager\\json\\output\\appCompo.json", "Source\\modules\\ui_content_manager\\json\\output\\appProperties.json")
 
 def get_graph_object(parrent, entry=None):
-    pass
+    global graph
+    graph = App(parrent, "Source\\modules\\ui_content_manager\\json\\graph\\appCompo.json", "Source\\modules\\ui_content_manager\\json\\graph\\appProperties.json")
 
 
 # Updater

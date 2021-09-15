@@ -209,31 +209,22 @@
             }
         }
     },
-    "out": {
-        "type": "Frame",
+    "out": { 
+        "type": "Custom",
+        "package": "ui_content_manager",
+        "name": "get_output_object",
+        "entry": "Interpolation",
+        "path": "Source\\modules\\ui_content_manager",
         "bd": 1,
         "height": 170,
-        "include":{
-            "results":{
-                "type": "Custom",
-                "package": "ui_content_manager",
-                "name": "get_output_object",
-                "entry": "Interpolation",
-                "path": "Source\\modules\\ui_content_manager"
-            }
-        }
+        "pady": 50
     },
     "graph": {
-        "type": "Frame",
+        "type": "Custom",
         "bd": 1,
-        "include": {
-            "graph": {
-                "type": "Custom",
-                "package": "ui_content_manager",
-                "name": "get_graph_object",
-                "entry": "Interpolation",
-                "path": "Source\\modules\\ui_content_manager"
-            }
-        }
+        "package": "ui_content_manager",
+        "name": "get_graph_object",
+        "entry": "Interpolation",
+        "path": "Source\\modules\\ui_content_manager"
     }
 }
