@@ -1,0 +1,52 @@
+{
+    "header":{
+        "type": "Label",
+        "text": "Primitive estimator",
+        "pady": 10
+    },
+    "mode":{
+        "pady": 5,
+        "include":{
+            "midpoint":{
+                "type": "Radio",
+                "text": "Midpoint"
+            },
+            "crank":{
+                "type": "Radio",
+                "text": "Crank-Nicolson"
+            }
+        }
+    },
+    "equation":{
+        "include":{
+            "label1":{
+                "type": "Label",
+                "text": "Equation :"
+            },
+            "equation":{
+                "pady": 5,
+                "type": "Entry",
+                "width": 30
+            },
+            "label2":{
+                "type": "Label",
+                "text": "Y0 :"
+            },
+            "y0":{
+                "pady": 5,
+                "type": "Entry",
+                "width": 30
+            }
+        }
+    },
+    "compute":{
+        "type": "Button",
+        "pady": 5,
+        "text": "Compute",
+        "relief": "flat"
+    },
+    "info":{
+        "pady": 10,
+        "type": "Label"
+    }
+}

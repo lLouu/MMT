@@ -1,0 +1,43 @@
+{
+    "header":{
+        "type": "Label",
+        "text": "Derivative estimator",
+        "pady": 10
+    },
+    "mode":{
+        "pady": 5,
+        "include":{
+            "dif":{
+                "type": "Radio",
+                "text": "finite difference"
+            },
+            "partial":{
+                "type": "Radio",
+                "text": "Partial Derivative"
+            }
+        }
+    },
+    "equation":{
+        "include":{
+            "label1":{
+                "type": "Label",
+                "text": "Equation :"
+            },
+            "equation":{
+                "pady": 5,
+                "type": "Entry",
+                "width": 30
+            }
+        }
+    },
+    "compute":{
+        "type": "Button",
+        "pady": 5,
+        "text": "Compute",
+        "relief": "flat"
+    },
+    "info":{
+        "pady": 10,
+        "type": "Label"
+    }
+}
