@@ -217,7 +217,7 @@
         "path": "Source\\modules\\ui_content_manager",
         "bd": 1,
         "height": 170,
-        "pady": 50
+        "pady": 20
     },
     "graph": {
         "type": "Custom",

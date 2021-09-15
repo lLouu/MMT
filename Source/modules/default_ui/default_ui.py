@@ -107,7 +107,7 @@ class App():
                                 activeforeground="black" if not "activeforeground" in keys else dic["activeforeground"],
                                 bd=1 if not "bd" in keys else dic["bd"],
                                 bg="white" if not "bg" in keys else dic["bg"],
-                                command=self.empty_method if not "command" in keys or dic["command"].__class__ != dict or not "package" in list(dic["command"].keys()) or not "name" in list(dic["command"].keys()) else partial(loader(dic["command"]["package"], dic["command"]["name"], '' if not "path" in list(dic["command"].keys()) else dic["command"]["path"]), self, None if not "entry" in list(dic["command"].keys()) else dic["command"]["entry"]),
+                                command=self.empty_method if not "command" in keys or dic["command"].__class__ != dict or not "package" in list(dic["command"].keys()) or not "name" in list(dic["command"].keys()) else partial(loader(dic["command"]["package"], dic["command"]["name"], '' if not "path" in list(dic["command"].keys()) else dic["command"]["path"]), self, None if not "entry" in list(dic["command"].keys()) else dic["command"]["entry"] if not dic["command"]["entry"].__class__ == dict or not "package" in list(dic["command"]["entry"].keys()) or not "name" in list(dic["command"]["entry"].keys()) else loader(dic["command"]["entry"]["package"], dic["command"]["entry"]["name"], '' if not "path" in list(dic["command"]["entry"].keys()) else dic["command"]["entry"]["path"])(self)),
                                 font=("Times", "9") if not "font" in keys else dic["font"],
                                 fg="black" if not "fg" in keys else dic["fg"],
                                 height=0 if not "height" in keys else dic["height"],
@@ -150,7 +150,7 @@ class App():
                                     bitmap="" if not "bitmap" in keys else dic["bitmap"],
                                     bd=0 if not "bd" in keys else dic["bd"],
                                     cursor="arrow" if not "cursor" in keys else dic["cursor"],
-                                    command=self.empty_method if not "command" in keys or dic["command"].__class__ != dict or not "package" in list(dic["command"].keys()) or not "name" in list(dic["command"].keys()) else partial(loader(dic["command"]["package"], dic["command"]["name"], '' if not "path" in list(dic["command"].keys()) else dic["command"]["path"]), self, None if not "entry" in list(dic["command"].keys()) else dic["command"]["entry"]),
+                                    command=self.empty_method if not "command" in keys or dic["command"].__class__ != dict or not "package" in list(dic["command"].keys()) or not "name" in list(dic["command"].keys()) else partial(loader(dic["command"]["package"], dic["command"]["name"], '' if not "path" in list(dic["command"].keys()) else dic["command"]["path"]), self, None if not "entry" in list(dic["command"].keys()) else dic["command"]["entry"] if not dic["command"]["entry"].__class__ == dict or not "package" in list(dic["command"]["entry"].keys()) or not "name" in list(dic["command"]["entry"].keys()) else loader(dic["command"]["entry"]["package"], dic["command"]["entry"]["name"], '' if not "path" in list(dic["command"]["entry"].keys()) else dic["command"]["entry"]["path"])(self)),
                                     font=("Times", "9") if not "font" in keys else dic["font"],
                                     fg="black" if not "fg" in keys else dic["fg"],
                                     height=0 if not "height" in keys else dic["height"],
@@ -179,7 +179,7 @@ class App():
                                     bitmap="" if not "bitmap" in keys else dic["bitmap"],
                                     bd=0 if not "bd" in keys else dic["bd"],
                                     cursor="arrow" if not "cursor" in keys else dic["cursor"],
-                                    command=self.empty_method if not "command" in keys or dic["command"].__class__ != dict or not "package" in list(dic["command"].keys()) or not "name" in list(dic["command"].keys()) else partial(loader(dic["command"]["package"], dic["command"]["name"], '' if not "path" in list(dic["command"].keys()) else dic["command"]["path"]), self, None if not "entry" in list(dic["command"].keys()) else dic["command"]["entry"]),
+                                    command=self.empty_method if not "command" in keys or dic["command"].__class__ != dict or not "package" in list(dic["command"].keys()) or not "name" in list(dic["command"].keys()) else partial(loader(dic["command"]["package"], dic["command"]["name"], '' if not "path" in list(dic["command"].keys()) else dic["command"]["path"]), self, None if not "entry" in list(dic["command"].keys()) else dic["command"]["entry"] if not dic["command"]["entry"].__class__ == dict or not "package" in list(dic["command"]["entry"].keys()) or not "name" in list(dic["command"]["entry"].keys()) else loader(dic["command"]["entry"]["package"], dic["command"]["entry"]["name"], '' if not "path" in list(dic["command"]["entry"].keys()) else dic["command"]["entry"]["path"])(self)),
                                     disabledforeground="gray",
                                     font=("Times", "9") if not "font" in keys else dic["font"],
                                     fg="black" if not "fg" in keys else dic["fg"],
@@ -207,7 +207,7 @@ class App():
                                 bg="white" if not "bg" in keys else dic["bg"],
                                 bd=0 if not "bd" in keys else dic["bd"],
                                 cursor="arrow" if not "cursor" in keys else dic["cursor"],
-                                command=self.empty_method if not "command" in keys or dic["command"].__class__ != dict or not "package" in list(dic["command"].keys()) or not "name" in list(dic["command"].keys()) else partial(loader(dic["command"]["package"], dic["command"]["name"], '' if not "path" in list(dic["command"].keys()) else dic["command"]["path"]), self, None if not "entry" in list(dic["command"].keys()) else dic["command"]["entry"]),
+                                command=self.empty_method if not "command" in keys or dic["command"].__class__ != dict or not "package" in list(dic["command"].keys()) or not "name" in list(dic["command"].keys()) else partial(loader(dic["command"]["package"], dic["command"]["name"], '' if not "path" in list(dic["command"].keys()) else dic["command"]["path"]), self, None if not "entry" in list(dic["command"].keys()) else dic["command"]["entry"] if not dic["command"]["entry"].__class__ == dict or not "package" in list(dic["command"]["entry"].keys()) or not "name" in list(dic["command"]["entry"].keys()) else loader(dic["command"]["entry"]["package"], dic["command"]["entry"]["name"], '' if not "path" in list(dic["command"]["entry"].keys()) else dic["command"]["entry"]["path"])(self)),
                                 digits=IntVar().set(1) if not "digits" in keys or dic["digits"].__class__ != dict or not "type" in list(dic["digits"].keys()) else self.get_tk_object(dic["digits"]["type"], 0 if not "value" in list(dic["digits"].keys()) else dic["digits"]["value"]),
                                 font=("Times", "9") if not "font" in keys else dic["font"],
                                 fg="black" if not "fg" in keys else dic["fg"],
@@ -272,7 +272,9 @@ class App():
                                     relief=GROOVE if not "relief" in keys else dic["relief"],
                                     text="" if not "text" in keys else dic["text"],
                                     textvariable=None if not "textvariable" in keys or dic["textvariable"].__class__ != dict or not "package" in list(dic["textvariable"].keys()) or not "name" in list(dic["textvariable"].keys()) else loader(dic["textvariable"]["package"], dic["textvariable"]["name"])(self, None if not "entry" in list(dic["textvariable"].keys()) else dic["textvariable"]["entry"]),
-                                    width=0 if not "width" in keys else dic["width"])
+                                    width=0 if not "width" in keys else dic["width"],
+                                    padx=0 if not "padx" in keys else dic["padx"],
+                                    pady=0 if not "pady" in keys else dic["pady"])
                 # elif dic["type"] == "Listbox":
                 #     obj = Listbox(parrent)
                 # elif dic["type"] == "Canvas":
@@ -288,7 +290,7 @@ class App():
                             disabledforeground="gray" if not "disabledforground" in keys else dic["disabledforeground"],
                             font=("Times", "9") if not "font" in keys else dic["font"],
                             fg="black" if not "fg" in keys else dic["fg"],
-                            postcommand=self.empty_method if not "command" in keys or dic["command"].__class__ != dict or not "package" in list(dic["command"].keys()) or not "name" in list(dic["command"].keys()) else partial(loader(dic["command"]["package"], dic["command"]["name"], '' if not "path" in list(dic["command"].keys()) else dic["command"]["path"]), self, None if not "entry" in list(dic["command"].keys()) else dic["command"]["entry"]),
+                            postcommand=self.empty_method if not "command" in keys or dic["command"].__class__ != dict or not "package" in list(dic["command"].keys()) or not "name" in list(dic["command"].keys()) else partial(loader(dic["command"]["package"], dic["command"]["name"], '' if not "path" in list(dic["command"].keys()) else dic["command"]["path"]), self, None if not "entry" in list(dic["command"].keys()) else dic["command"]["entry"] if not dic["command"]["entry"].__class__ == dict or not "package" in list(dic["command"]["entry"].keys()) or not "name" in list(dic["command"]["entry"].keys()) else loader(dic["command"]["entry"]["package"], dic["command"]["entry"]["name"], '' if not "path" in list(dic["command"]["entry"].keys()) else dic["command"]["entry"]["path"])(self)),
                             relief=SOLID if not "relief" in keys else dic["relief"],
                             selectcolor="gray" if not "selectcolor" in keys else dic["selectcolor"],
                             tearoff=0 if not "tearoff" in keys else dic["tearoff"],
@@ -398,13 +400,13 @@ class App():
                         menu.add_radiobutton(label="Unkown Option" if not "label" in keys else config["label"],
                                             value=1 if not "value" in keys else config["value"],
                                             variable=IntVar() if not "variable" in keys or config["variable"] != dict or not "package" in list(config["variable"].keys() or not "name" in list(config["variable"].keys())) else partial(loader(config["variable"]["package"], config["variable"]["name"], '' if not "path" in list(config["variable"].keys()) else config["variable"]["path"]), self, None if not "entry" in list(config["variable"].keys()) else config["variable"]["entry"]),
-                                            command=self.empty_method if not "package" in keys or not "name" in keys else partial(loader(config["package"], config["name"], '' if not "path" in keys else config["path"]), self, None if not "entry" in keys else config["entry"]))
+                                            command=self.empty_method if not "package" in keys or not "name" in keys else partial(loader(config["package"], config["name"], '' if not "path" in keys else config["path"]), self, None if not "entry" in keys else config["entry"] if not config["entry"].__class__ == dict or not "package" in list(config["entry"].keys()) or not "name" in list(config["entry"].keys()) else loader(config["entry"]["package"], config["entry"]["name"], '' if not "path" in list(config["entry"].keys()) else config["entry"]["path"])(self)))
                     elif config["type"] == "checkbox":
                         menu.add_checkbutton(label="Unkown Option" if not "label" in keys else config["label"],
                                             onvalue=1 if not "onvalue" in keys else config["onvalue"],
                                             offvalue=0 if not "offvalue" in keys else config["offvalue"],
                                             variable=IntVar() if not "variable" in keys or config["variable"] != dict or not "package" in list(config["variable"].keys() or not "name" in list(config["variable"].keys())) else partial(loader(config["variable"]["package"], config["variable"]["name"], '' if not "path" in list(config["variable"].keys()) else config["variable"]["path"]), self, None if not "entry" in list(config["variable"].keys()) else config["variable"]["entry"]),
-                                            command=self.empty_method if not "package" in keys or not "name" in keys else partial(loader(config["package"], config["name"], '' if not "path" in keys else config["path"]), self, None if not "entry" in keys else config["entry"]))
+                                            command=self.empty_method if not "package" in keys or not "name" in keys else partial(loader(config["package"], config["name"], '' if not "path" in keys else config["path"]), self, None if not "entry" in keys else config["entry"] if not config["entry"].__class__ == dict or not "package" in list(config["entry"].keys()) or not "name" in list(config["entry"].keys()) else loader(config["entry"]["package"], config["entry"]["name"], '' if not "path" in list(config["entry"].keys()) else config["entry"]["path"])(self)))
                     elif config["type"] == "separator":
                         menu.add_separator()
 

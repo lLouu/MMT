@@ -63,5 +63,6 @@ def up_graph_content(app, option):
 # Generator
 def gen_popup(app, option):
     popup = App("Source\\modules\\ui_content_manager\\json\\popup\\appWindow.json", "Source\\modules\\ui_content_manager\\json\\input\\" + option + "\\appCompo.json", "Source\\modules\\ui_content_manager\\json\\input\\" + option + "\\appProperties.json")
+    popup.window.configure(background='white')
     popup.run()
 
