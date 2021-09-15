@@ -202,7 +202,7 @@
             "content":{
                 "type": "Custom",
                 "package": "ui_content_manager",
-                "name": "get_input_object",
+                "name": "set_input_object",
                 "entry": "Interpolation",
                 "path": "Source\\modules\\ui_content_manager"
 
@@ -212,7 +212,7 @@
     "out": { 
         "type": "Custom",
         "package": "ui_content_manager",
-        "name": "get_output_object",
+        "name": "set_output_object",
         "entry": "Interpolation",
         "path": "Source\\modules\\ui_content_manager",
         "bd": 1,
@@ -223,7 +223,7 @@
         "type": "Custom",
         "bd": 1,
         "package": "ui_content_manager",
-        "name": "get_graph_object",
+        "name": "set_graph_object",
         "entry": "Interpolation",
         "path": "Source\\modules\\ui_content_manager"
     }

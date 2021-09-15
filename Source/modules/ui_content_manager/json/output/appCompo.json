@@ -1,6 +1,20 @@
 {
     "helloworld":{
         "type": "Label",
-        "text": "hy there"
+        "textvariable":{
+            "package": "ui_content_manager",
+            "name": "set_output_text",
+            "path": "Source\\modules\\ui_content_manager",
+            "entry": "I love chocolate milk"
+        }
+    },
+    "change text":{
+        "type": "Entry",
+        "width": 50,
+        "height": 1,
+        "textvariable":{
+            "package": "ui_content_manager",
+            "name": "get_output_text"
+        }
     }
 }
