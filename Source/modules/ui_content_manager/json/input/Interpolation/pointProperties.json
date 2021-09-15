@@ -1,0 +1,25 @@
+{
+    "point":{
+        "include":{
+            "label1":{
+                "mode": "grid"
+            },
+            "x":{
+                "mode": "grid",
+                "column": 1
+            },
+            "label2":{
+                "mode": "grid",
+                "column": 2
+            },
+            "y":{
+                "mode": "grid",
+                "column": 3
+            },
+            "delete":{
+                "mode": "grid",
+                "column": 4
+            }
+        }
+    }
+}

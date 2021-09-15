@@ -1,20 +1,37 @@
 {
-    "helloworld":{
-        "type": "Label",
-        "textvariable":{
-            "package": "ui_content_manager",
-            "name": "set_output_text",
-            "path": "Source\\modules\\ui_content_manager",
-            "entry": "I love chocolate milk"
+    "output":{
+        "type": "LabelFrame",
+        "text": "Output",
+        "padx": 50,
+        "pady": 6,
+        "include":{
+            "result":{
+                "type": "Label",
+                "textvariable":{
+                    "package": "ui_content_manager",
+                    "name": "set_output_text",
+                    "path": "Source\\modules\\ui_content_manager",
+                    "entry": "I love chocolate milk"
+                }
+            }
         }
     },
-    "change text":{
-        "type": "Entry",
-        "width": 50,
-        "height": 1,
-        "textvariable":{
-            "package": "ui_content_manager",
-            "name": "get_output_text"
+    "history":{
+        "type": "Frame",
+        "pady": 4,
+        "include":{
+            "previous": {
+                "type": "Button",
+                "text": "Previous Result",
+                "padx": 10,
+                "relief": "flat"
+            },
+            "next": {
+                "type": "Button",
+                "text": "Next Result",
+                "padx": 10,
+                "relief": "flat"
+            }
         }
     }
 }

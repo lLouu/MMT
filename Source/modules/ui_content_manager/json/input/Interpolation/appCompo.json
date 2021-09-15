@@ -1,6 +1,50 @@
 {
-    "helloworld":{
+    "header":{
         "type": "Label",
-        "text": "Interpol"
+        "text": "Interpolation generator",
+        "pady": 10
+    },
+    "points":{
+        "include":{
+            "label1":{
+                "type": "Label",
+                "text": "Points :"
+            },
+            "content":{
+
+            },
+            "buttons":{
+                "include":{
+                    "new":{
+                        "type": "Button",
+                        "text": "New point",
+                        "command":{
+                            "package": "ui_content_manager_extention",
+                            "name": "add_point",
+                            "path": "Source\\modules\\ui_content_manager"
+                        }
+                    },
+                    "reset":{
+                        "type": "Button",
+                        "text": "Reset",
+                        "command":{
+                            "package": "ui_content_manager_extention",
+                            "name": "reset",
+                            "path": "Source\\modules\\ui_content_manager"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "compute":{
+        "type": "Button",
+        "pady": 5,
+        "text": "Compute",
+        "relief": "flat"
+    },
+    "info":{
+        "pady": 10,
+        "type": "Label"
     }
 }

@@ -1,6 +1,52 @@
 {
-    "helloworld":{
+    "header":{
         "type": "Label",
-        "text": "Solutions"
+        "text": "Solutions estimator",
+        "pady": 10
+    },
+    "mode":{
+        "pady": 5,
+        "include":{
+            "newton":{
+                "type": "Radio",
+                "text": "Newton-Raphson"
+            },
+            "secante":{
+                "type": "Radio",
+                "text": "Secante"
+            }
+        }
+    },
+    "equation":{
+        "include":{
+            "label1":{
+                "type": "Label",
+                "text": "Equation :"
+            },
+            "equation":{
+                "pady": 5,
+                "type": "Entry",
+                "width": 30
+            },
+            "label2":{
+                "type": "Label",
+                "text": "First estimation :"
+            },
+            "first estimation":{
+                "pady": 5,
+                "type": "Entry",
+                "width": 30
+            }
+        }
+    },
+    "compute":{
+        "type": "Button",
+        "pady": 5,
+        "text": "Compute",
+        "relief": "flat"
+    },
+    "info":{
+        "pady": 10,
+        "type": "Label"
     }
 }

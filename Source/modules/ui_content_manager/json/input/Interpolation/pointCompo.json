@@ -1,0 +1,37 @@
+{
+    "point":{
+        "include":{
+            "label1":{
+                "type": "Label",
+                "text": "x :   "
+            },
+            "x":{
+                "pady": 5,
+                "type": "Entry",
+                "width": 5
+            },
+            "label2":{
+                "type": "Label",
+                "text": "   y :   "
+            },
+            "y":{
+                "pady": 5,
+                "type": "Entry",
+                "width": 5
+            },
+            "delete":{
+                "type": "Button",
+                "text": " X ",
+                "command":{
+                    "package": "ui_content_manager_extention",
+                    "name": "remove",
+                    "path": "Source\\modules\\ui_content_manager",
+                    "entry": {
+                        "package": "ui_content_manager_extention",
+                        "name": "get_point_index"
+                    }
+                }
+            }
+        }
+    }
+}

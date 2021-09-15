@@ -1,3 +1,29 @@
 {
-    
+    "points":{
+        "include":{
+            "label1":{
+                "mode": "grid",
+                "sticky": "n"
+            },
+            "content":{
+                "mode": "grid",
+                "row": 1,
+                "sticky": "n"
+            },
+            "buttons":{
+                "mode": "grid",
+                "row": 2,
+                "sticky": "n",
+                "include":{
+                    "new":{
+                        "mode": "grid"
+                    },
+                    "reset":{
+                        "mode": "grid",
+                        "column": 1
+                    }
+                }
+            }
+        }
+    }
 }
